@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group([
+    'prefix' => 'api',
+    'namespace' => 'Api',
+//    'middleware' => 'userToken'
+] , function(){
+
+    Route::get('/test' , 'TestController@index');
+});

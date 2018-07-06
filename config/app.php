@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         //UEditor
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
+        //swoole ext
+        Hhxsv5\LaravelS\Illuminate\LaravelSServiceProvider::class,
 
     ],
 
