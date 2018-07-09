@@ -16,4 +16,8 @@ class TestController extends Controller
     public function index(){
         return SskcOrder::all();
     }
+
+    public function test(){
+        return "hi swoole";
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +30,14 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
             //mode maker
             $this->app->register(\Reliese\Coders\CodersServiceProvider::class);
+        }
+
+        // 自动切换swoole 环境和 php-fpm
+        if ( App::runningInConsole()){
+            $this->app->register(\Hhxsv5\LaravelS\Illuminate\Database\DatabaseServiceProvider::class);
+        }else{
+            // 注册php-fpm database
+            $this->app->register(\Illuminate\Database\DatabaseServiceProvider::class);
         }
     }
 }

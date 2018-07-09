@@ -22,4 +22,5 @@ Route::group([
 ] , function(){
 
     Route::get('/test' , 'TestController@index');
+    Route::get('/hi' , 'TestController@test');
 });
