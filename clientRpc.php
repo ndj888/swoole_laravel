@@ -9,9 +9,12 @@
 require 'vendor/autoload.php';
 $config = new \ext\bean\RpcClientConfig();
 $config->setServerAddress(new \ext\bean\Ipv4Address([
-    'ip' => '172.24.156.97',
+    'ip' => '172.20.1.74',
     'port' => 8868
 ]));
+$config->setPort(8699);
+$config->setListen('172.20.1.74');
+$config->setServerName("testServer");
 $serverRpcImpl = new \ext\lib\RpcClientImpl();
 $serverRpcImpl->setRpcClientConfig($config);
 
