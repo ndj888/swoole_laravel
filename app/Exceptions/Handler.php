@@ -3,7 +3,9 @@
 namespace App\Exceptions;
 
 use Exception;
+use ext\lib\ResponseMessage;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
 {
@@ -36,6 +38,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        Log::error('错误信息' . $exception->getMessage());
         parent::report($exception);
     }
 
@@ -48,6 +51,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        return response()->json(ResponseMessage::error($exception->getMessage()));
+//        return parent::render($request, $exception);
     }
 }
