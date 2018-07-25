@@ -39,6 +39,7 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         Log::error('错误信息' . $exception->getMessage());
+        Log::error('trace['.$exception->getTraceAsString().']');
         parent::report($exception);
     }
 
