@@ -70,13 +70,13 @@ class MyLaravelSwooleCommand extends LaravelSCommand
             '_ENV' => $_ENV,
         ];
 
-        if (file_exists($svrConf['swoole']['pid_file'])) {
-            $pid = (int)file_get_contents($svrConf['swoole']['pid_file']);
-            if ($this->killProcess($pid, 0)) {
-                $this->warn(sprintf('LaravelS: PID[%s] is already running at %s:%s.', $pid, $svrConf['listen_ip'], $svrConf['listen_port']));
-                return;
-            }
-        }
+//        if (file_exists($svrConf['swoole']['pid_file'])) {
+//            $pid = (int)file_get_contents($svrConf['swoole']['pid_file']);
+//            if ($this->killProcess($pid, 0)) {
+//                $this->warn(sprintf('LaravelS: PID[%s] is already running at %s:%s.', $pid, $svrConf['listen_ip'], $svrConf['listen_port']));
+//                return;
+//            }
+//        }
 
         // start rpc client
         $com_jjcbs_tcpClient = ServiceFactory::getInstance(TcpClientService::class);
