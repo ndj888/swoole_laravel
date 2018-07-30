@@ -9,6 +9,7 @@
 namespace ext\fun;
 
 
+use com_jjcbs\rpc\bean\msg\RequestRpcBean;
 use Illuminate\Http\Request;
 
 class Tool
@@ -40,5 +41,17 @@ class Tool
         $uuid .= substr($chars,16,4) . '-';
         $uuid .= substr($chars,20,12);
         return $pre . $uuid;
+    }
+
+    /**
+     * laravel 下 自动创建rpc request
+     * @return RequestRpcBean
+     */
+    public static function createRpcRequest(Request $request) : RequestRpcBean{
+        return new RequestRpcBean([
+            'body' => json_encode(self::getRequestParam($request) , true),
+            'header' => $request->headers->all(),
+            'method' => 'POST'
+        ]);
     }
 }
