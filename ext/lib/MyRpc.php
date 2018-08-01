@@ -18,8 +18,8 @@ class MyRpc extends RPC
 
     public function __construct(array $data = [])
     {
-        parent::__construct($data);
         !empty($this->checkRules) && $this->setRules($this->checkRules);
+        parent::__construct($data);
     }
 
     protected function check()
