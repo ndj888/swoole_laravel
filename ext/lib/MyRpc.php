@@ -25,7 +25,7 @@ class MyRpc extends RPC
     protected function check()
     {
         // TODO: Implement check() method.
-        $vailter = \Validator::make($this->toArray(), $this->getRules(), $this->message);
+        $vailter = \Validator::make($this->toArray(), $this->checkRules, $this->message);
         $vailter->validate();
     }
 
