@@ -13,13 +13,13 @@ use com_jjcbs\lib\RPC;
 
 class MyRpc extends RPC
 {
-    protected $message = [];
+    private $message = [];
     public $checkRules = [];
 
     public function __construct(array $data = [])
     {
-        !empty($this->checkRules) && $this->setRules($this->checkRules);
         parent::__construct($data);
+        !empty($this->checkRules) && $this->check();
     }
 
     protected function check()
